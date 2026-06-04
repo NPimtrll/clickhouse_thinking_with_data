@@ -1,0 +1,37 @@
+services:
+  clickhouse:
+    image: 'clickhouse/clickhouse-server:${CHVER:-latest}'
+    user: '101:101'
+    container_name: clickhouse
+    hostname: clickhouse
+    volumes:
+      - ${PWD}/fs/volumes/clickhouse/etc/clickhouse-server/config.d/config.xml:/etc/clickhouse-server/config.d/config.xml
+      - ${PWD}/fs/volumes/clickhouse/etc/clickhouse-server/users.d/users.xml:/etc/clickhouse-server/users.d/users.xml
+      - ${PWD}/data:/data:ro
+      - ${PWD}/scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    ports:
+      - '127.0.0.1:8123:8123'
+      - '127.0.0.1:9000:9000'
+    depends_on:
+      clickhouse-keeper:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8123/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  clickhouse-keeper:
+    image: 'clickhouse/clickhouse-keeper:${CHKVER:-latest-alpine}'
+    user: '101:101'
+    container_name: clickhouse-keeper
+    hostname: clickhouse-keeper
+    volumes:
+      - ${PWD}/fs/volumes/clickhouse-keeper/etc/clickhouse-keeper/keeper_config.xml:/etc/clickhouse-keeper/keeper_config.xml
+    ports:
+      - '127.0.0.1:9181:9181'
+    healthcheck:
+      test: ["CMD-SHELL", "echo ruok | nc -w 1 127.0.0.1 9181 | grep imok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
