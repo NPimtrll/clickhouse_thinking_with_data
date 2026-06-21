@@ -21,6 +21,25 @@ services:
       timeout: 5s
       retries: 5
 
+  ch-ui:
+    image: 'ghcr.io/caioricciuti/ch-ui:${CHUIVER:-latest}'
+    container_name: ch-ui
+    hostname: ch-ui
+    environment:
+      CLICKHOUSE_URL: http://clickhouse:8123
+    volumes:
+      - ch-ui-data:/app/data
+    ports:
+      - '127.0.0.1:3488:3488'
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3488/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   clickhouse-keeper:
     image: 'clickhouse/clickhouse-keeper:${CHKVER:-latest-alpine}'
     user: '101:101'
@@ -35,3 +54,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+
+volumes:
+  ch-ui-data:

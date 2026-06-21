@@ -1,0 +1,30 @@
+[0m10:56:51.894697 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105173dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104fee6f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104fed8b0>]}
+
+
+============================== 10:56:51.941971 | e252f87d-c925-4d03-9e5e-10776e8f0965 ==============================
+[0m10:56:51.941971 [info ] [MainThread]: Running with dbt=1.11.11
+[0m10:56:51.942695 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'partial_parse': 'True', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'quiet': 'False', 'no_print': 'None', 'indirect_selection': 'eager', 'version_check': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'use_experimental_parser': 'False', 'use_colors': 'True', 'invocation_command': 'dbt init greenery', 'empty': 'None', 'cache_selected_only': 'False', 'profiles_dir': '/Users/stone4fimere/.dbt', 'log_path': 'logs', 'target_path': 'None', 'write_json': 'True', 'warn_error': 'None'}
+[0m10:56:52.029386 [debug] [MainThread]: Starter project path: /Users/stone4fimere/clickhouse_thinking_with_data/dbt/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m10:56:52.042708 [info ] [MainThread]: 
+Your new dbt project "greenery" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m10:56:52.043200 [info ] [MainThread]: Setting up your profile.
+[0m10:57:12.094521 [info ] [MainThread]: No sample profile found for clickhouse.
+[0m10:57:12.098388 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 20.305984, "process_in_blocks": "0", "process_kernel_time": 0.528502, "process_mem_max_rss": "126320640", "process_out_blocks": "0", "process_user_time": 1.545095}
+[0m10:57:12.099758 [debug] [MainThread]: Command `dbt init` succeeded at 10:57:12.099356 after 20.31 seconds
+[0m10:57:12.100616 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102187830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105a26bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062dcb90>]}
+[0m10:57:12.101600 [debug] [MainThread]: Flushing usage events
+[0m10:57:13.290516 [debug] [MainThread]: An error was encountered while trying to flush usage events
